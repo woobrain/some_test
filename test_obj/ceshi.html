@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>练习</title>
+<script type="text/javascript">
+var subN=0 ;
+function start(){
+var oInput = document.getElementById("inp");
+oInput.focus();
+}
+function submitOnce(){
+if(subN==0){
+subN=1;
+var tt = document.getElementById('pp').innerText;
+var ts = document.getElementById('inp').value;
+if(tt!=ts){
+alert('一不小心出错了')
+}else{}
+return false;
+}else{
+
+return false
+}
+}
+
+</script>
+</head>
+<body onkeydown="if(event.keyCode==13) if(submitOnce())document.form1.submit()" onload="start()">
+<h3>请您输入：<p id="shuzi"></p></h3>
+<p style="display:none" id="pp"></p>
+<form name="form1" οnsubmit="return false;">
+    <input type=text name=foo id="inp" value="">
+
+</form>
+<script type="text/javascript">
+ var b = Math.floor(Math.random()*(99999999999+1-100000)+100000+Math.random())+Math.random().toFixed(2)
+<!-- var c = [a,b];-->
+<!-- var d = Math.floor(Math.random()*(1+1-0)+0)-->
+ document.getElementById('shuzi').innerText = b;
+ document.getElementById('pp').innerText = b;
+ </script>
+</body>
+</html>
