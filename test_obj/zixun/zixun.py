@@ -14,10 +14,12 @@ import requests
 from bs4 import BeautifulSoup
 import re
 
-res = requests.get('http://henan.sina.com.cn/news/z/2020-03-12/detail-iimxxstf8365060.shtml')
+res = requests.get('https://tousu.sina.com.cn/complaint/view/17349174755/')
 # res = requests.get('https://k.sina.com.cn/article_1924738303_72b92cff02000qirs.html?from=astro')
 res.encoding = 'utf-8'
 soup = BeautifulSoup(res.text, 'html.parser')
+content = soup.select('.ts-d-question')
+print(content[0].text)
 # html_content = soup.select('.article div,.article p[cms-style="font-L align-Justify"]')
 # if html_content == []:
 #     html_content = soup.select('.article-body div,.article-body p')
@@ -60,9 +62,9 @@ soup = BeautifulSoup(res.text, 'html.parser')
 #     str_a = str_a.split('特别声明：以上文章内容仅代表作者本人观点')[0]
 # print(str_a)
 
-html_str1 = soup.select('.article')
-if html_str1 == []:
-    html_str1 = soup.select('.article-body')
+# html_str1 = soup.select('.article')
+# if html_str1 == []:
+#     html_str1 = soup.select('.article-body')
 # html_str = str(html_str1[0])
 # print(html_str1[0].text)
 # print(html_str)
@@ -83,18 +85,18 @@ if html_str1 == []:
 # print(html_str)
 # print(html_str1[0].value)
 
-content_str = re.sub('\n','',html_str1[0].text)
-content_str = re.sub('\s{2,}','\n',content_str)
+# content_str = re.sub('\n','',html_str1[0].text)
+# content_str = re.sub('\s{2,}','\n',content_str)
 # if content_str.startswith('\n'):
 #     content_str = content_str[1::]
 # if content_str.endswith('\n'):
 #     content_str = content_str[:len(content_str)-1:]
-content_str = re.search(r'[^a-zA-Z|\S]*',content_str,re.S + re.M)
+# content_str = re.search(r'[^a-zA-Z|\S]*',content_str,re.S + re.M)
 # pat=re.compile(r'[\u4e00-\u9fa5]+')
 # content_str=pat.findall(content_str)
 # if '特别声明：以上文章内容仅代表作者本人观点' in content_str:
 #     content_str = content_str.split('特别声明：以上文章内容仅代表作者本人观点')[0]
-print(content_str.group())
+# print(content_str.group())
 
 # article1 = re.sub('\n','',article1)
 # article1 = re.sub('\s{2,}','\n',article1)

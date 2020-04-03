@@ -1,3 +1,5 @@
+import re
+
 import requests
 # from PIL import Image
 # from io import BytesIO
@@ -8,15 +10,14 @@ headers = {'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image
            'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36'}
 payloads = {'ie':'UTF-8','wd':'北京'}
 res = requests.get('https://www.baidu.com/s',headers=headers,params=payloads)
-# i = Image.open(BytesIO(res.content))
-# i.show()
-# i.save('demo.png')
-# print(res.status_code)
 res.encoding = 'utf-8'
 soup = BeautifulSoup(res.text,'html.parser')
-content = soup.select('#content_left')
-for i in content[0].find_all('div'):
-    print(i.contents)
+content = soup.select('#content_left div h3')
+for i in content:
+    print([i.a['href'],i.a.text])
+
+# for i in content[0].find_all(''):
+#     print(i.text)
     # print(bs4.element.Tag)
     # print(type(i))
     # if isinstance(type(i),bs4.element.Tag):
